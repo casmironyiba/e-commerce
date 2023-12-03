@@ -4,9 +4,11 @@ import React, { useEffect } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import styled from 'styled-components'
 
 
-
+const Form = styled.form``;
+const InputWrapper = styled.form``;
 
 export default function SignupPage() {
     const router = useRouter();
@@ -21,7 +23,7 @@ export default function SignupPage() {
     const onSignup = async () => {
         try {
             setLoading(true);
-            const response = await axios.post("/api/users/signup", user);
+            const response = await axios.post("/api/signup", user);
             console.log("Signup success", response.data);
             router.push("/login");
             
@@ -44,9 +46,12 @@ export default function SignupPage() {
 
 
     return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <Form>
+
+
         <h1>{loading ? "Processing" : "Signup"}</h1>
-        <hr />
+
+        <InputWrapper>
         <label htmlFor="username">username</label>
         <input 
         className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
@@ -75,10 +80,11 @@ export default function SignupPage() {
             placeholder="password"
             />
             <button
-            onClick={onSignup}
+          onClick={onSignup}
             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">{buttonDisabled ? "No signup" : "Signup"}</button>
             <Link href="/login">Visit login page</Link>
-        </div>
+        </InputWrapper>
+    </Form>
     )
 
 }
