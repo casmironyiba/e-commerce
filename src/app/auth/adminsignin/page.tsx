@@ -1,20 +1,15 @@
 "use client";
-import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import styled from 'styled-components'
-import boxProperty from "@/fp/boxProperty";
-import remsize from "@/fp/remsize";
-import { colors } from "@/components/Themes";
-import displayFlex from "@/fp/displayFlex";
 import AuthButton from "@/components/AuthButton";
 import KeyDown from "@/components/keyDown";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import {Form,Div,Input,Label,EyeIcon,InputWrapper,InputContainer} from '@/components/AuthStyles';
 import DontHaveAnAccount from "@/components/DontHaveAnAccount";
+import styles from "../../../styles/pages/auth/signin.module.scss";
+import AdminDontHaveAnAccount from "@/styles/components/AdminDontHaveANAccount";
 
 
 
@@ -62,20 +57,20 @@ export default function SignupPage() {
       const togglePasswordVisibility = () => {
         setPasswordVisible((prev) =>  !prev);
       };
-      passwordEyeWrapperRef.current.addEventListener("click", togglePasswordVisibility)
+      passwordEyeWrapperRef?.current.addEventListener("click", togglePasswordVisibility)
       return () => {
-          passwordEyeWrapperRef.current.removeEventListener("click", togglePasswordVisibility);
+          passwordEyeWrapperRef?.current.removeEventListener("click", togglePasswordVisibility);
         }
       }, [passwordVisible]);
 
     return (
-    <AdminSigninForm onSubmit={handleSubmit}>
-      <SigninInputContainer>
-
-        <SigninInputWrapper>
-          <Label htmlFor="email">Email:</Label>
-          <Input 
-            id="email"
+    <form className={styles.signinFormContainer}  onSubmit={handleSubmit}>
+      <div className={styles.signinInputContainer}>
+        <div className={styles.signinInputWrapper}>
+          <label htmlFor="email" className={styles.signinLabel}>Email:</label>
+          <input 
+            id="adminEmail"
+            className={styles.signinInput}
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -84,22 +79,23 @@ export default function SignupPage() {
             onKeyDown={emailKeyDown}
             required
           />
-        </SigninInputWrapper>
+        </div>
 
-        <SigninInputWrapper>
-          <Label htmlFor="password">Password:</Label>
-          <Div>
-            <EyeIcon ref={passwordEyeWrapperRef}>
+        <div className={styles.signinInputWrapper}>
+          <label htmlFor="password" className={styles.signinLabel} >Password:</label>
+          <div className={styles.signinEyeWrapper}>
+            <div ref={passwordEyeWrapperRef} className={styles.signinPasswordEyeWrapper}>
               <VisibilityOffIcon 
-                id='passwordEyeClose'
+                className={styles.passwordEyeClose}
               />
               <VisibilityIcon 
-                id='passwordEyeOpen'
+                className={styles.passwordEyeOpen}
               />
 
-            </EyeIcon>
-            <Input 
-              id="password"
+            </div>
+            <input 
+              id="adminPassword"
+              className={styles.signinInput}
               type={passwordVisible ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -108,31 +104,16 @@ export default function SignupPage() {
               onKeyDown={passwordKeyDown}
               required
             />
-          </Div>
-        </SigninInputWrapper>
+          </div>
+        </div>
 
-        <AuthButton
-          ref={buttonRef}
-        >
-          Sign In
-        </AuthButton>
+        <div className={styles.signinAuthButtonWrapper}>
+          <AuthButton adminSignin />
+        </div>
 
-        <DontHaveAnAccount />
-      </SigninInputContainer>
-    </AdminSigninForm>
+        <AdminDontHaveAnAccount />
+      </div>
+    </form>
     )
 };
-
-const AdminSigninForm = styled(Form)`
-  height:60%;
-`;
-
-const SigninInputContainer = styled(InputContainer)`
-  gap:10px;
-
-`;
-
-const SigninInputWrapper = styled(InputWrapper)`
-  height:70px;
-`;
 

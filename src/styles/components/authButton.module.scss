@@ -1,0 +1,17 @@
+@use "../abstracts";
+
+.authButtonContainer {
+  @include abstracts.boxProperty(100%, 100%,auto,abstracts.remsize(5), abstracts.$blue);
+  display:inline-block;
+  border-radius:10px;
+};
+
+.authButton {
+  @include abstracts.boxProperty(100%, 100%,auto);
+  padding: 0;
+  border: none;
+  background: inherit;
+  color: abstracts.$white;
+  font-size: 1rem;
+
+}

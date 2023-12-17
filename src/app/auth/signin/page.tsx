@@ -1,16 +1,13 @@
 "use client";
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { useEffect,useRef, useState } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import {Form,Div,Input,Label,EyeIcon,InputWrapper,InputContainer} from '@/components/AuthStyles';
 import DontHaveAnAccount from "@/components/DontHaveAnAccount";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import AuthButton from "@/components/AuthButton";
-import styled from "styled-components";
-
-
+import styles from "../../../styles/pages/auth/signin.module.scss";
 
 
 
@@ -59,11 +56,12 @@ export default function SigninPage() {
       }, [passwordVisible]);
 
       return (
-          <SigninForm onSubmit={handleSubmit}>
-            <SignuinInputContainer>
-              <SigninInputWrapper>
-                <Label htmlFor="email">Email:</Label>
-                <Input 
+          <form className={styles.signinFormContainer} onSubmit={handleSubmit}>
+            <div className={styles.signinInputContainer}>
+              <div className={styles.signinInputWrapper}>
+                <label htmlFor="email" className={styles.signinLabel}>Email:</label>
+                <input 
+                  className={styles.signinInput}
                   ref={emailRef}
                   id="email"
                   type="email"
@@ -71,21 +69,23 @@ export default function SigninPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
               />
-            </SigninInputWrapper>
+            </div>
 
-            <SigninInputWrapper>
-              <Label htmlFor="password">Password:</Label>
-              <Div>
-                <EyeIcon ref={passwordEyeWrapperRef}>
+            <div className={styles.signinInputWrapper}>
+              <label htmlFor="password" className={styles.signinLabel}>Password:</label>
+              <div className={styles.signinEyeWrapper}>
+                <div
+                  ref={passwordEyeWrapperRef} className={styles.signinPasswordEyeWrapper}>
                   <VisibilityOffIcon 
-                    id='passwordEyeClose'
+                    className={styles.passwordEyeClose}
                   />
                   <VisibilityIcon 
-                    id='passwordEyeOpen'
+                    className={styles.passwordEyeOpen}
                   />
-                </EyeIcon>
+                </div>
 
-                <Input 
+                <input 
+                  className={styles.signinInput}
                   ref={passwordRef}
                   id="password"
                   type={passwordVisible ? 'text' : 'password'}
@@ -93,28 +93,27 @@ export default function SigninPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-              </Div>
-            </SigninInputWrapper>
-            
-            <AuthButton ref={buttonRef}>
-              Sign Up
-            </AuthButton>
+              </div>
+            </div>
+            <div className={styles.signinAuthButtonWrapper}>
+              <AuthButton adminSignin  />
+            </div>
             <DontHaveAnAccount />
-          </SignuinInputContainer>
-        </SigninForm>
+          </div>
+        </form>
     )
 
 };
 
-const SigninForm = styled(Form)`
-  height:60%;
-`;
+// const SigninForm = styled(Form)`
+//   height:60%;
+// `;
+//
+// const SignuinInputContainer = styled(InputContainer)`
+//   gap:10px;
+//
+// `;
+//
+// const SigninInputWrapper = styled(InputWrapper)`
+//   height:70px;
 
-const SignuinInputContainer = styled(InputContainer)`
-  gap:10px;
-
-`;
-
-const SigninInputWrapper = styled(InputWrapper)`
-  height:70px;
-`;

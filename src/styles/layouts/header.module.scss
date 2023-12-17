@@ -1,0 +1,46 @@
+@use "../../styles/abstracts";
+
+.header {
+  grid-area:h;
+  @include abstracts.mediaQueries('mobileS') {
+    @include abstracts.boxProperty(100%,100%,'',abstracts.remsize(0),abstracts.$dark);
+    @include abstracts.displayFlex(space-between,center,column nowrap);
+    position: relative;
+    padding: 0;
+
+    #searchItems {
+      position: relative;
+      top:75px;
+      right:40px;
+    }
+  };
+
+  @include abstracts.mediaQueries('tablet') {
+    #searchItems {
+      position: relative;
+      top: 0px;
+    }
+  };
+
+  @include abstracts.mediaQueries('laptop') {
+    // #signIn:hover {
+    // position:relative;
+      // }
+
+  };
+
+
+};
+
+.headerWrapper {
+  @include abstracts.mediaQueries('mobileS') {
+    @include abstracts.boxProperty(100%,50%,'',abstracts.remsize(10),abstracts.$dark);
+    @include abstracts.displayFlex(space-between,center,row nowrap);
+  };
+
+  @include abstracts.mediaQueries('tablet') {
+    height:100%;
+
+  };
+};
+

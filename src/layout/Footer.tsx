@@ -7,61 +7,39 @@ import boxProperty from '@/fp/boxProperty';
 import remsize from '@/fp/remsize';
 import { colors } from '@/components/Themes';
 import Link from "next/link";
+import styles from '../styles/layouts/footer.module.scss';
 
-const Container = styled.div`
-${boxProperty(`100%`,'100%')};
-${displayFlex('space-around', `center`,`row nowrap`)};
-  grid-area:f;
-  height:100%;
-  background: ${colors.$black};
-`;
 
-const Ul = styled.ul`
-  ${boxProperty(`80%`,'50%',`auto`,remsize(10), colors.$black)};
-  ${displayFlex('space-around', `center`,`row nowrap`)};
-  color: ${colors.$white};
-  list-style:none;
-  border-bottom: 1px solid ${colors.$white};
-  
-`
 
-const Li = styled.li`
-  a {
-    text-decoration:none;
-    color: ${colors.$white};
 
-    }
-
-`
 export default function Footer() {
   return (
-    <Container>
-      <Ul>
-
-        <Li>
+    <div className={styles.footer}>
+      <ul>
+        <li>
           <Link href='/contacts'>
           Contacts
           </Link>
-        </Li>
+        </li>
 
-        <Li>
+        <li>
           <Link href='/about'>
             About
           </Link>
-        </Li>
+        </li>
 
-        <Li>
+        <li>
           <Link href='/help'>
             Help
           </Link>
-        </Li>
-        <Li>
+        </li>
+        <li>
           <Link href='/developer'>
             Developer
           </Link>
-        </Li>
+        </li>
 
-      </Ul>
-    </Container>
+      </ul>
+    </div>
   )
 }

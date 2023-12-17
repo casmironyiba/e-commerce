@@ -1,0 +1,11 @@
+@use '../../styles/abstracts';
+
+.main {
+ 
+  grid-area:m;
+  @include abstracts.mediaQueries('mobileS') {
+    @include abstracts.boxProperty(100%,100%,auto,abstracts.remsize(0),abstracts.$white);
+    @include abstracts.displayFlex(space-between,center,column nowrap);
+  }
+
+};

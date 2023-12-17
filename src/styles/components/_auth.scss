@@ -1,0 +1,80 @@
+@use '../abstracts';
+
+%authFormContainer {
+  @include abstracts.boxProperty(100%,60%,auto,abstracts.remsize(0), abstracts.$light);
+  font-size:.8rem;
+};
+
+
+
+%authInputContainer {
+  @include abstracts.boxProperty(100%,100%,'',abstracts.remsize(5));
+  @include abstracts.displayFlex(space-around,center,column nowrap);
+  gap:10px;
+};
+
+%authInputWrapper {
+  @include abstracts.boxProperty(100%, 60px,'',abstracts.remsize(0));
+  // background: blue;
+  @include abstracts.displayFlex(space-between,flex-start,column nowrap);
+};
+
+%authLabel {
+  @include abstracts.mediaQueries('mobileS') {
+    font-size:.9rem;
+  }
+};
+
+%authInput {
+  @include abstracts.boxProperty(100%, 100%,'', abstracts.remsize(5),abstracts.$white);
+  font-size:1rem;
+  border:none;
+  outline:none;
+  border:1px solid palevioletred;
+  border-radius:7px;
+};
+
+%authEyeWrapper {
+  @include abstracts.boxProperty(100%, abstracts.remsize(40),'', abstracts.remsize(0), abstracts.$white);
+  @include abstracts.displayFlex(space-between,center,row nowrap);
+  border-radius:7px;
+  border:1px solid palevioletred;
+    .signinInput,.signupInput {
+      width: 90%;
+      border:none;
+      height:90%;
+    }
+  };
+
+%passwordEyeWrapper {
+  cursor:pointer;
+  @include abstracts.displayFlex(center,center);
+  #passwordEyeOpen, #comfirmPasswordEyeOpen {
+    display:none;
+  }; 
+};
+
+%passwordEyeWrapper {
+  @extend %passwordEyeWrapper;
+    .open {
+      #passwordEyeClose {
+        display: none;
+      };
+    };
+         
+  };
+
+%comfirmPasswordEyeWrapper {
+  @extend %passwordEyeWrapper;
+    .open {
+      #passwordEyeClose {
+        display: none;
+      };
+    };
+         
+  };
+
+  %authBtnWrapper {
+    width:100%;
+    height:40px;
+  };

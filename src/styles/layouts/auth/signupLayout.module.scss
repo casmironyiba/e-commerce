@@ -1,0 +1,14 @@
+
+@use '../../abstracts';
+@use '../../components/_authLayout.scss';
+
+.signupLayoutContainer {
+  @extend %authLayoutContainer;
+  height:600px;
+};
+
+.signupLayoutWrapper {
+  @extend %authLayoutWrapper;
+  height:25%;
+};
+

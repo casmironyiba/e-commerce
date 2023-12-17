@@ -1,11 +1,18 @@
 @use '../../styles/abstracts';
 
-homeLayout {
-  box-sizing: border-box;
+.rootLayout {
+
+  * {
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  };
+
   display: grid;
 
-  @include mediaQueries('mobileS') {
-    @include boxProperty(100%,abstracts.remsize(1500),'auto','0px', abstracts.$red)};
+  @include abstracts.mediaQueries('mobileS') {
+    @include abstracts.boxProperty(100%,abstracts.remsize(1500),auto,0px, abstracts.$red);
     grid-template-columns:repeat(10, 1fr);
     grid-template-rows: 150px auto 200px;
     grid-template-areas:
@@ -14,13 +21,13 @@ homeLayout {
       "f f f f f f f f f f";
   };
 
-  @include mediaQueries('tablet') {
+  @include abstracts.mediaQueries('tablet') {
     // grid-template-rows: 80px auto 400px;
 
   };
 
-  @include mediaQueries('laptop')(`
-    ${boxProperty(`100%`,remsize(1500),'auto','0px', colors.$red)};
+  @include abstracts.mediaQueries('laptop') {
+    @include abstracts.boxProperty(100%,abstracts.remsize(1500),auto,0px, abstracts.$red);
     grid-template-columns:repeat(10, 1fr);
     grid-template-rows: 80px auto 200px;
     grid-template-areas:
@@ -28,6 +35,6 @@ homeLayout {
       "m m m m m m m m m m"
       "f f f f f f f f f f";
 
-  `)}
+  };
 
-};
+}

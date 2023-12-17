@@ -1,0 +1,43 @@
+@use '../../abstracts';
+@use '../../components/button.scss';
+@use '../../components/auth.scss';
+
+.signinFormContainer {
+  @extend %authFormContainer;
+};
+
+.signinInputContainer {
+  @extend %authInputContainer;
+};
+
+.signinInputWrapper {
+  @extend %authInputWrapper;
+};
+
+.signinLabel {
+  @extend %authLabel;
+};
+
+.signinInput {
+  @extend %authInput;
+};
+
+.signinEyeWrapper {
+  @extend %authEyeWrapper;
+  .passwordEyeOpen {
+    display:none;
+  };
+};
+
+.signinPasswordEyeWrapper {
+  @extend %passwordEyeWrapper;
+};
+
+.signinAuthButtonWrapper {
+  @extend %authBtnWrapper;
+}
+
+
+
+
+

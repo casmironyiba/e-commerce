@@ -1,0 +1,54 @@
+@use '../../abstracts';
+@use '../../components/_auth.scss';
+
+.signupFormContainer {
+  @extend %authFormContainer;
+  height:75%;
+};
+
+.signupInputContainer {
+  @extend %authInputContainer;
+};
+
+
+.signupFormContainer {
+  @extend %authFormContainer;
+  background-color: green;
+};
+
+
+
+.signupInputContainer {
+  @extend %authFormContainer;
+  gap:15px;
+    // background-color: black;
+};
+
+.signupInputWrapper {
+  @extend %authInputWrapper;
+    // height:80%;
+};
+
+
+.signupLabel {
+  @extend %authLabel;
+};
+
+.signupInput {
+  @extend %authInput;
+};
+
+.signupEyeWrapper {
+  @extend %authEyeWrapper;
+  .passwordEyeOpen {
+    display:none;
+  };
+
+  .comfirmPasswordEyeOpen {
+    display:none;
+  }
+};
+
+.signupAuthButtonWrapper {
+  @extend %authBtnWrapper;
+}

@@ -1,0 +1,33 @@
+@use '../abstracts';
+
+.hamburger {
+  @include abstracts.mediaQueries('mobileS') {
+    @include abstracts.boxProperty(abstracts.remsize(80),abstracts.remsize(60));
+    @include abstracts.displayFlex(center,center);
+    cursor:pointer;
+    background: red;
+
+    svg#menuOpenIcon {
+      display:none;
+    }
+
+    &.open {
+      // display: none;
+
+      svg#menuOpenIcon {
+        display:inline-block;
+      }
+      svg#menuIcon {
+        display:none;
+      }
+    }
+
+  };
+
+  @include abstracts.mediaQueries('laptop') {
+      display:none;
+    // #menuOpenIcon,#menuIcon {
+    //   display:none;
+    // }
+  };
+};

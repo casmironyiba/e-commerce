@@ -1,0 +1,15 @@
+@use '../abstracts';
+
+.dontHaveAnAccount {
+  @include abstracts.boxProperty(100%,abstracts.remsize(40),'',5px);
+  @include abstracts.displayFlex(center,center);
+
+  p{
+      font-size: .9rem;;
+    a {
+      // color:red;
+      font-size: 1rem;;
+    }
+
+  }
+}

@@ -1,0 +1,26 @@
+@use '../../styles/abstracts';
+
+.footer {
+  @include abstracts.boxProperty(100%,100%);
+  @include abstracts.displayFlex(space-around, center,row nowrap);
+  grid-area:f;
+  height:100%;
+  background: abstracts.$black;
+
+  ul {
+    @include abstracts.boxProperty(80%,50%,auto,abstracts.remsize(10), abstracts.$black);
+    @include abstracts.displayFlex(space-around, center,row nowrap);
+    color: abstracts.$white;
+    list-style:none;
+    border-bottom: 1px solid abstracts.$white;
+
+    li {
+      a {
+        text-decoration:none;
+        color: abstracts.$white;
+      };
+    };
+  };
+
+};
+

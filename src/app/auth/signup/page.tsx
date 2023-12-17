@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import React, { useEffect, useRef, useState } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
@@ -8,11 +8,12 @@ import KeyDown from "@/components/keyDown";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import AlreadyHaveAnAccount from "@/components/AlreadyHaveAnAccount";
-import {Form,Div,Input,Label,EyeIcon,InputWrapper,InputContainer} from '@/components/AuthStyles';
+import styles from '@/styles/pages/auth/signup.module.scss';
 
 
 
-export default function SignupPage() {
+export default async function SignupPage() {
+
     const router = useRouter();
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
@@ -89,13 +90,13 @@ export default function SignupPage() {
 
 
     return (
-    <Form method="POST" onSubmit={handleSubmit}>
-      <InputContainer>
+    <form className={styles.signupFormContainer} onSubmit={handleSubmit}>
+      <div className={styles.signupInputContainer}>
 
-        <InputWrapper>
-          <Label htmlFor="username">Username:</Label>
-          <Input 
-            id="username"
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="username" className={styles.signupLabel}>Username:</label>
+          <input 
+            className={styles.signupInput}
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -103,12 +104,12 @@ export default function SignupPage() {
             onKeyDown={usernameKeyDown}
             required
           />
-        </InputWrapper>
+        </div>
 
-        <InputWrapper>
-          <Label htmlFor="email">Email:</Label>
-          <Input 
-            id="email"
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="email" className={styles.signupLabel}>Email:</label>
+          <input 
+            className={styles.signupInput}
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -116,12 +117,12 @@ export default function SignupPage() {
             onKeyDown={emailKeyDown}
             required
           />
-        </InputWrapper>
+        </div>
 
-        <InputWrapper>
-          <Label htmlFor="Phonenumber">Phone Number:</Label>
-            <Input 
-              id="phoneNumber"
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="Phonenumber" className={styles.signupLabel}>Phone Number:</label>
+            <input 
+              className={styles.signupInput}
               type="text"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
@@ -129,22 +130,22 @@ export default function SignupPage() {
               onKeyDown={phoneNumberKeyDown}
               required
             />
-        </InputWrapper>
+        </div>
 
-        <InputWrapper>
-          <Label htmlFor="password">Password:</Label>
-          <Div>
-            <EyeIcon ref={passwordEyeWrapperRef}>
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="password" className={styles.signupLabel}>Password:</label>
+          <div className={styles.signupEyeWrapper}>
+            <div className={styles.signupPasswordEyeWrapper} ref={passwordEyeWrapperRef}>
               <VisibilityOffIcon 
-                id='passwordEyeClose'
+                className={styles.passwordEyeClose}
               />
               <VisibilityIcon 
-                id='passwordEyeOpen'
+                className={styles.passwordEyeOpen}
               />
 
-            </EyeIcon>
-            <Input 
-              id="password"
+            </div>
+            <input 
+              className={styles.signupInput}
               type={passwordVisible ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -152,23 +153,23 @@ export default function SignupPage() {
               onKeyDown={passwordKeyDown}
               required
             />
-          </Div>
-        </InputWrapper>
+          </div>
+        </div>
 
-        <InputWrapper>
-          <Label htmlFor="comfirmPassword">Comfirm Password:</Label>
-          <Div>
-            <EyeIcon ref={comfirmPasswordEyeWrapperRef} >
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="comfirmPassword" className={styles.signupLabel}>Comfirm Password:</label>
+          <div className={styles.signupEyeWrapper}>
+            <div className={styles.signupComfirmPasswordEyeWrapper} ref={comfirmPasswordEyeWrapperRef} >
               <VisibilityOffIcon 
-                id='comfirmPasswordEyeClose'
+                className={styles.comfirmPasswordEyeClose}
               />
               <VisibilityIcon 
-                id='comfirmPasswordEyeOpen'
+                className={styles.comfirmPasswordEyeOpen}
               />
 
-            </EyeIcon>
-            <Input 
-              id="comfirmPassword"
+            </div>
+            <input 
+              className={styles.signupInput}
               type={comfirmPasswordVisible ? 'text' : 'password'}
               value={comfirmPassword}
               onChange={(e) => setComfirmPassword(e.target.value)}
@@ -176,16 +177,16 @@ export default function SignupPage() {
               onKeyDown={comfirmPasswordKeyDown}
               required
             />
-          </Div>
-        </InputWrapper>
+          </div>
+        </div>
 
-        <AuthButton type='submit' ref={buttonRef}>
-          Sign Up
-        </AuthButton>
+        <div className={styles.signupAuthButtonWrapper}>
+          <AuthButton signup/>
+        </div>
 
         <AlreadyHaveAnAccount />
-      </InputContainer>
-    </Form>
+      </div>
+    </form>
     )
 };
 

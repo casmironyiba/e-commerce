@@ -1,0 +1,10 @@
+@use '../../abstracts';
+@use '../../components/_authLayout.scss';
+//
+.signinLayoutContainer {
+  @extend %authLayoutContainer;
+};
+
+.signinLayoutWrapper {
+  @extend %authLayoutWrapper;
+}

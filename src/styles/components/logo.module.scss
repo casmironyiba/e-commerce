@@ -1,0 +1,17 @@
+@use '../abstracts';
+
+.logo {
+  @include abstracts.mediaQueries('mobileS') {
+    @include abstracts.boxProperty(remsize(120),remsize(50));
+    @include abstracts.displayFlex(center,center);
+    background:white;
+    font-size:1.4rem;
+    color:black;
+    border:2px solid white;
+
+    a {
+        text-decoration: none;
+      }
+
+  }
+};

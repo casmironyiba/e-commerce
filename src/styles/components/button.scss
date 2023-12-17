@@ -1,0 +1,6 @@
+@use '../abstracts';
+
+.authButton {
+  @include abstracts.boxProperty(100%, abstracts.remsize(40),auto, abstracts.remsize(5), abstracts.$blue);
+  border-radius: 10px;
+};

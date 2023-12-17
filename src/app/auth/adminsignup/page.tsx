@@ -4,16 +4,12 @@ import React, { useEffect, useRef, useState } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import styled from 'styled-components'
-import boxProperty from "@/fp/boxProperty";
-import remsize from "@/fp/remsize";
-import { colors } from "@/components/Themes";
-import displayFlex from "@/fp/displayFlex";
 import AuthButton from "@/components/AuthButton";
 import KeyDown from "@/components/keyDown";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import {Form,Div,Input,Label,EyeIcon,InputWrapper,InputContainer} from '@/components/AuthStyles';
+import styles from '@/styles/pages/auth/signup.module.scss';
+import AdminAlreadyHaveAnAccount from "@/styles/components/AdminAlreadyHaveAnAccount";
 
 
 
@@ -21,6 +17,7 @@ export default function SignupPage() {
     const router = useRouter();
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
+    const [phoneNumber,setPhoneNumber] = useState('');
     const [password,setPassword] = useState('');
     const [comfirmPassword,setComfirmPassword] = useState('');
     const [passwordVisible,setPasswordVisible] = useState(false);
@@ -89,94 +86,106 @@ export default function SignupPage() {
 
 
     return (
-    <Form onSubmit={handleSubmit}>
-      <InputContainer>
+    <form className={styles.signupFormContainer} onSubmit={handleSubmit}> 
+      <div className={styles.signupInputContainer}>
 
-        <InputWrapper>
-          <Label htmlFor="username">Username:</Label>
-          <Input 
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="username" className={styles.signupLabel}>Username:</label>
+          <input 
             id="username"
+            className={styles.signupInput}
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="username"
             ref={usernameRef}
             onKeyDown={usernameKeyDown}
             required
           />
-        </InputWrapper>
+        </div>
 
-        <InputWrapper>
-          <Label htmlFor="email">Email:</Label>
-          <Input 
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="email" className={styles.signupLabel}>Email:</label>
+          <input 
             id="email"
+            className={styles.signupInput}
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="email"
             ref={emailRef}
             onKeyDown={emailKeyDown}
             required
           />
-        </InputWrapper>
+        </div>
 
-        <InputWrapper>
-          <Label htmlFor="password">Password:</Label>
-          <Div>
-            <EyeIcon ref={passwordEyeWrapperRef}>
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="Phonenumber" className={styles.signupLabel}>Phone Number:</label>
+            <input 
+              className={styles.signupInput}
+              type="text"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              ref={phoneNumberRef}
+              onKeyDown={phoneNumberKeyDown}
+              required
+            />
+        </div>
+
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="password" className={styles.signupLabel}>Password:</label>
+          <div className={styles.signupEyeWrapper}>
+            <div className={styles.signupPasswordEyeWrapper} ref={passwordEyeWrapperRef}>
               <VisibilityOffIcon 
-                id='passwordEyeClose'
+                className={styles.passwordEyeClose}
               />
               <VisibilityIcon 
-                id='passwordEyeOpen'
+                className={styles.passwordEyeOpen}
               />
 
-            </EyeIcon>
-            <Input 
+            </div>
+            <input 
               id="password"
-              type="password"
+              className={styles.signupInput}
+              type={passwordVisible ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="password"
               ref={passwordRef}
               onKeyDown={passwordKeyDown}
               required
             />
-          </Div>
-        </InputWrapper>
+          </div>
+        </div>
 
-        <InputWrapper>
-          <Label htmlFor="comfirmPassword">Comfirm Password:</Label>
-          <Div>
-            <EyeIcon ref={comfirmPasswordEyeWrapperRef}>
+        <div className={styles.signupInputWrapper}>
+          <label htmlFor="comfirmPassword" className={styles.signupLabel}>Comfirm Password:</label>
+          <div className={styles.signupEyeWrapper}>
+            <div className={styles.signupComfirmPasswordEyeWrapper} ref={comfirmPasswordEyeWrapperRef} >
               <VisibilityOffIcon 
-                id='comfirmPasswordEyeClose'
+                className={styles.comfirmPasswordEyeClose}
               />
               <VisibilityIcon 
-                id='comfirmPasswordEyeOpen'
+                className={styles.comfirmPasswordEyeOpen}
               />
 
-            </EyeIcon>
-            <Input 
+            </div>
+            <input 
               id="comfirmPassword"
-              type="password"
+              className={styles.signupInput}
+              type={comfirmPasswordVisible ? 'text' : 'password'}
               value={comfirmPassword}
               onChange={(e) => setComfirmPassword(e.target.value)}
-              placeholder="Comfirm password"
               ref={comfirmPasswordRef}
               onKeyDown={comfirmPasswordKeyDown}
               required
             />
-          </Div>
-        </InputWrapper>
-        <AuthButton
-          ref={buttonRef}
-        >
-          Sign Up
-        </AuthButton>
+          </div>
+        </div>
+        <div className={styles.signupAuthButtonWrapper}>
+          <AuthButton signup/>
+        </div>
 
-      </InputContainer>
-    </Form>
+        <AdminAlreadyHaveAnAccount />
+      </div>
+    </form>
     )
 };
 

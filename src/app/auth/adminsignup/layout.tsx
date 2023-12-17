@@ -1,10 +1,5 @@
 'use client'
-import { colors } from "@/components/Themes";
-import boxProperty from "@/fp/boxProperty";
-import displayFlex from "@/fp/displayFlex";
-import { mediaQueries } from "@/fp/mediaQueries";
-import remsize from "@/fp/remsize";
-import styled from "styled-components"
+import styles from "@/styles/layouts/auth/signupLayout.module.scss";
 
 
 export default function SignUpLayout({
@@ -13,45 +8,15 @@ export default function SignUpLayout({
   children: React.ReactNode
 }) {
   return (
-    <Container>
-        <Div>
-          <H1>
+    <div className={styles.signupLayoutContainer}>
+        <div className={styles.signupLayoutWrapper}>
+          <h1>
             Admin Sign up
-          </H1>
-        </Div>
+          </h1>
+        </div>
         {children}
-    </Container>
+    </div>
   )
 };
 
-const Container  = styled.div`
-  ${mediaQueries('mobileS')(`
-  ${displayFlex(`space-between`,`center`,`column nowrap`)};
-  ${boxProperty(remsize(300), remsize(500),'auto',remsize(0))};
-  // border:1px solid ${colors.$light};
-  box-shadow: 3px 3px 5px;
 
-  `)};
-
-  ${mediaQueries('laptop')(`
-  width: ${remsize(350)};
-
-  `)};
-`;
-
-const Wrapper = styled.div`
-  ${mediaQueries('mobileS')(`
-  `)};
-`;
-
-const Div = styled.div`
-  ${boxProperty('100%', `30%`,`auto`,remsize(5),colors.$blue)};
-`;
-
-const H1= styled.div`
-  ${boxProperty('100%', remsize(100),``,remsize(5))};
-  ${displayFlex(`center`,`center`)};
-  color: ${colors.$white};
-  font-size:1.5rem;
-  font-weight:600;
-`;
