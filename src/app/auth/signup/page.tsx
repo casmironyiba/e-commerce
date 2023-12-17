@@ -15,11 +15,11 @@ import styles from '@/styles/pages/auth/signup.module.scss';
 export default async function SignupPage() {
 
     const router = useRouter();
-    const [username,setUsername] = useState('');
-    const [email,setEmail] = useState('');
-    const [phoneNumber,setPhoneNumber] = useState('');
-    const [password,setPassword] = useState('');
-    const [comfirmPassword,setComfirmPassword] = useState('');
+    // const [username,setUsername] = useState('');
+    // const [email,setEmail] = useState('');
+    // const [phoneNumber,setPhoneNumber] = useState('');
+    // const [password,setPassword] = useState('');
+    // const [comfirmPassword,setComfirmPassword] = useState('');
     const [passwordVisible,setPasswordVisible] = useState(false);
     const [comfirmPasswordVisible,setComfirmPasswordVisible] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -44,28 +44,29 @@ export default async function SignupPage() {
       };
 
 
-    const handleSubmit = async (event:any) => {
-      event.preventDefault();
-      try {
-        setLoading(true);
-        const response = await axios.post("/api/auth/signup", {
-          username,
-          email,
-          phoneNumber,
-          password,
-          isAdmin:false
-        });
-        console.log("Signup success", response.data);
-        router.push("/login");
-          
-      } catch (error:any) {
-          console.log("Signup failed", error.message);
-          
-          toast.error(error.message);
-      }finally {
-          setLoading(false);
-      }
-    }
+ 
+    //   try {
+    //     setLoading(true);
+    //     const res = await fetch(
+    //     "/api/auth/signup",
+    //     {
+    //       username,
+    //       email,
+    //       phoneNumber,
+    //       password,
+    //       isAdmin:false
+    //     });
+    //     console.log("Signup success", response.data);
+    //     router.push("/login");
+    //       
+    //   } catch (error:any) {
+    //       console.log("Signup failed", error.message);
+    //       
+    //       toast.error(error.message);
+    //   }finally {
+    //       setLoading(false);
+    //   }
+    // }
 
     useEffect(() => {
       usernameRef?.current?.focus()
@@ -98,8 +99,9 @@ export default async function SignupPage() {
           <input 
             className={styles.signupInput}
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            name='username'
+            // value={username}
+            // onChange={(e) => setUsername(e.target.value)}
             ref={usernameRef}
             onKeyDown={usernameKeyDown}
             required
@@ -111,8 +113,9 @@ export default async function SignupPage() {
           <input 
             className={styles.signupInput}
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            // value={email}
+            // onChange={(e) => setEmail(e.target.value)}
             ref={emailRef}
             onKeyDown={emailKeyDown}
             required
@@ -124,8 +127,9 @@ export default async function SignupPage() {
             <input 
               className={styles.signupInput}
               type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              name="phoneNumber"
+              // value={phoneNumber}
+              // onChange={(e) => setPhoneNumber(e.target.value)}
               ref={phoneNumberRef}
               onKeyDown={phoneNumberKeyDown}
               required
@@ -147,8 +151,9 @@ export default async function SignupPage() {
             <input 
               className={styles.signupInput}
               type={passwordVisible ? 'text' : 'password'}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              // value={password}
+              // onChange={(e) => setPassword(e.target.value)}
               ref={passwordRef}
               onKeyDown={passwordKeyDown}
               required
@@ -171,8 +176,9 @@ export default async function SignupPage() {
             <input 
               className={styles.signupInput}
               type={comfirmPasswordVisible ? 'text' : 'password'}
-              value={comfirmPassword}
-              onChange={(e) => setComfirmPassword(e.target.value)}
+              name="comfirmPassword"
+              // value={comfirmPassword}
+              // onChange={(e) => setComfirmPassword(e.target.value)}
               ref={comfirmPasswordRef}
               onKeyDown={comfirmPasswordKeyDown}
               required
