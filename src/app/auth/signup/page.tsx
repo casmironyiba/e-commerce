@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
@@ -12,7 +12,7 @@ import styles from '@/styles/pages/auth/signup.module.scss';
 
 
 
-export default async function SignupPage() {
+export default function SignupPage() {
 
     const router = useRouter();
     const [username,setUsername] = useState('');
@@ -32,6 +32,7 @@ export default async function SignupPage() {
     const buttonRef = useRef<any>(null);
     const passwordEyeWrapperRef = useRef<any>(null);
     const comfirmPasswordEyeWrapperRef = useRef<any>(null);
+    const signupErrRef = useRef<any>(null);
 
 
     const usernameKeyDown = KeyDown(emailRef);
@@ -46,22 +47,37 @@ export default async function SignupPage() {
 
     const handleSubmit = async (event:any) => {
       event.preventDefault();
+      const userInput = {
+        username,
+        email,
+        phoneNumber,
+        password,
+        isAdmin:false
+      };
       try {
         setLoading(true);
-        const response = await axios.post("/api/auth/signup", {
-          username,
-          email,
-          phoneNumber,
-          password,
-          isAdmin:false
-        });
-        console.log("Signup success", response.data);
-        router.push("/login");
+        if (password !== comfirmPassword) {
+          signupErrRef.current.innerText = 'Password does not match';
+            console.log('password does not matched');
+            return;
+        };
+       const response = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userInput }),
+      });
+       if (response.ok) {
+          console.log("Signup success", response);
+          router.push("/auth/signin");
+          return;
+        };
           
       } catch (error:any) {
           console.log("Signup failed", error.message);
           
-          toast.error(error.message);
+          // toast.error(error.message);
       }finally {
           setLoading(false);
       }
@@ -91,6 +107,7 @@ export default async function SignupPage() {
 
     return (
     <form className={styles.signupFormContainer} onSubmit={handleSubmit}>
+      <div className={styles.signupFormError} ref={signupErrRef}>No Err</div>
       <div className={styles.signupInputContainer}>
 
         <div className={styles.signupInputWrapper}>

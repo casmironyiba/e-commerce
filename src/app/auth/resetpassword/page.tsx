@@ -106,16 +106,3 @@ export default function SigninPage() {
     )
 
 };
-
-// const SigninForm = styled(Form)`
-//   height:60%;
-// `;
-//
-// const SignuinInputContainer = styled(InputContainer)`
-//   gap:10px;
-//
-// `;
-//
-// const SigninInputWrapper = styled(InputWrapper)`
-//   height:70px;
-

@@ -37,6 +37,12 @@
   @extend %authBtnWrapper;
 }
 
+.signinFormError {
+  @include abstracts.boxProperty(100%, abstracts.remsize(40),auto, abstracts.remsize(5));
+  background:palevioletred;
+  @include abstracts.displayFlex(center,center);
+}
+
 
 
 
