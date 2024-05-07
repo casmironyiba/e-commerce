@@ -37,13 +37,15 @@ const containerClass = isNavBarOpen ? 'open' : '';
       className={styles.hamburger}
     >
       <MenuIcon
-        sx={{color:'white',fontSize:60}} 
+        sx={{color:'white',fontSize:35}} 
         id='menuIcon'
+        // className={styles.hamburger}
         />
       <MenuOpenIcon
-        sx={{color:'white',fontSize:60}}
+        sx={{color:'white',fontSize:40}}
         fontSize='large'
         id='menuOpenIcon'
+        className={styles.menuOpenIcon}
         />
     </div>
   )

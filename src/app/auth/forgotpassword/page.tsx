@@ -1,11 +1,7 @@
 "use client";
-import React, { useEffect,useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {useRouter} from "next/navigation";
-import axios from "axios";
 import { toast } from "react-hot-toast";
-import DontHaveAnAccount from "@/components/DontHaveAnAccount";
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import AuthButton from "@/components/AuthButton";
 import styles from "../../../styles/pages/auth/signin.module.scss";
 // import AlreadyHaveAnAccount from "@/styles/components/AlreadyHaveAnAccount";
@@ -15,47 +11,32 @@ import styles from "../../../styles/pages/auth/signin.module.scss";
 export default function SigninPage() {
     const [email,setEmail] = useState('');
     const router = useRouter();
-    const [loading, setLoading] = React.useState(false);
 
     const emailRef = useRef<any>(null);
-    const passwordEyeWrapperRef = useRef<any>(null);
     const buttonRef = useRef<any>(null);
     const signinErrRef = useRef<any>(null);
 
-    const handleSubmit = async () => {
+   const handleForgotPassword = async (event:any) => {
+     event.preventDefault();
       try {
-        setLoading(true);
-        const response = await axios.post("/api/forgotpassword", {
-          email,
+        const response = await fetch('/api/auth/forgotpassword', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
         });
-        console.log("Signup success", response.data);
-        toast.success("Login success");
-        router.push("/login");
-          
-      } catch (error:any) {
-          console.log("Signup failed", error.message);
-          toast.error(error.message);
-          
-          toast.error(error.message);
-      }finally {
-          setLoading(false);
+
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
       }
     };
 
-
-    // useEffect(() => {
-    //   const togglePasswordVisibility = () => {
-    //     setPasswordVisible((prev) =>  !prev);
-    //   };
-    //   passwordEyeWrapperRef?.current?.addEventListener("click", togglePasswordVisibility)
-    //   return () => {
-    //     passwordEyeWrapperRef?.current?.removeEventListener("click", togglePasswordVisibility);
-    //     }
-    //   }, [passwordVisible]);
-
       return (
-          <form className={styles.signinFormContainer} onSubmit={handleSubmit}>
-      <div className={styles.signinFormError} ref={signinErrRef}>No Err</div>
+          <form className={styles.signinFormContainer} onSubmit={handleForgotPassword}>
+            <div className={styles.signinFormError} ref={signinErrRef}>No Err</div>
             <div className={styles.signinInputContainer}>
               <div className={styles.signinInputWrapper}>
                 <label htmlFor="email" className={styles.signinLabel}>Email:</label>
@@ -71,7 +52,7 @@ export default function SigninPage() {
             </div>
 
             <div className={styles.signinAuthButtonWrapper}>
-              <AuthButton forgotPassword  />
+              <AuthButton forgotPasswor  />
             </div>
           </div>
         </form>

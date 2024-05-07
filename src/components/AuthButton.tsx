@@ -7,6 +7,7 @@ interface Prop {
     signin?:any;
     adminSignin?:any;
     adminSignup?:any;
+    ref?:any
   };
 
 const AuthButton:FC<Prop>= (props:any) => {
@@ -48,7 +49,7 @@ const AuthButton:FC<Prop>= (props:any) => {
   if (props.forgotPassword) {
       return (
       <div className={styles.authButtonContainer} >
-        <button className={styles.authButton}> Forgot Password</button>
+        <button className={styles.authButton}>Reset Password </button>
       </div>
 
     )

@@ -14,7 +14,7 @@
   @include abstracts.mediaQueries('mobileS') {
     @include abstracts.boxProperty(100%,abstracts.remsize(1500),auto,0px, abstracts.$red);
     grid-template-columns:repeat(10, 1fr);
-    grid-template-rows: 150px auto 200px;
+    grid-template-rows: 80px auto 200px;
     grid-template-areas:
       "h h h h h h h h h h"
       "m m m m m m m m m m"
