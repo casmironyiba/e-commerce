@@ -32,6 +32,7 @@ export default function SignupPage() {
     const buttonRef = useRef<any>(null);
     const passwordEyeWrapperRef = useRef<any>(null);
     const comfirmPasswordEyeWrapperRef = useRef<any>(null);
+    const signupErrRef = useRef<any>(null);
 
 
     const usernameKeyDown = KeyDown(emailRef);
@@ -43,16 +44,41 @@ export default function SignupPage() {
         console.log('Submitted')
       };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (event:any) => {
+      event.preventDefault();
+
+      const userInput = {
+        username,
+        email,
+        phoneNumber,
+        password,
+        isAdmin:true
+      };
+
       try {
         setLoading(true);
-        const response = await axios.post("/api/signup", {
-          username,
-          email,
-          password
+
+        if (password !== comfirmPassword) {
+          signupErrRef.current.innerText = 'Password does not match';
+            console.log('password does not matched');
+            return;
+        };
+
+        const response = await fetch('/api/auth/adminsignup', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({userInput})
         });
-        console.log("Signup success", response.data);
-        router.push("/login");
+
+
+        if (response.ok) {
+          console.log("Signup success", response);
+          router.push("/auth/adminsignin");
+          return;
+        };
+
           
       } catch (error:any) {
           console.log("Signup failed", error.message);
@@ -74,12 +100,12 @@ export default function SignupPage() {
       };
 
       passwordEyeWrapperRef.current.addEventListener("click", togglePasswordVisibility)
-      comfirmPasswordEyeWrapperRef.current.addEventListener("click", toggleComfirmPasswordVisibility)
+      comfirmPasswordEyeWrapperRef?.current?.addEventListener("click", toggleComfirmPasswordVisibility)
 
       return () => {
-          passwordEyeWrapperRef.current.removeEventListener("click", togglePasswordVisibility);
+          passwordEyeWrapperRef?.current?.removeEventListener("click", togglePasswordVisibility);
 
-          comfirmPasswordEyeWrapperRef.current.removeEventListener("click", toggleComfirmPasswordVisibility);
+          comfirmPasswordEyeWrapperRef?.current?.removeEventListener("click", toggleComfirmPasswordVisibility);
         }
 
     }, []);
@@ -87,8 +113,8 @@ export default function SignupPage() {
 
     return (
     <form className={styles.signupFormContainer} onSubmit={handleSubmit}> 
+      <div className={styles.signupFormError} ref={signupErrRef}>No Err</div>
       <div className={styles.signupInputContainer}>
-
         <div className={styles.signupInputWrapper}>
           <label htmlFor="username" className={styles.signupLabel}>Username:</label>
           <input 

@@ -2,9 +2,11 @@
 
 .navBar {
   @include abstracts.mediaQueries('mobileS') {
+    height:100%;
     list-style:none;
      display:none;
      position:relative;
+     background:yellow;
 
       &.open {
         @include abstracts.boxProperty(abstracts.remsize(280), 400px, '', remsize(0),abstracts.$dark);

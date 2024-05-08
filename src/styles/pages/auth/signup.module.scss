@@ -3,7 +3,7 @@
 
 .signupFormContainer {
   @extend %authFormContainer;
-  height:75%;
+  height:80%;
 };
 
 .signupInputContainer {
@@ -51,4 +51,10 @@
 
 .signupAuthButtonWrapper {
   @extend %authBtnWrapper;
+};
+
+.signupFormError {
+  @include abstracts.boxProperty(100%, abstracts.remsize(40),auto, abstracts.remsize(5));
+  background:palevioletred;
+  @include abstracts.displayFlex(center,center);
 }

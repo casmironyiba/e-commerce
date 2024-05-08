@@ -20,12 +20,14 @@ export default function SignupPage() {
     const [password,setPassword] = useState('');
     const [comfirmPassword,setComfirmPassword] = useState('');
     const [passwordVisible,setPasswordVisible] = useState(false);
+    const [loading, setLoading] = React.useState(false);
 
     const emailRef = useRef<any>(null);
     const passwordRef = useRef<any>(null);
     const buttonRef = useRef<any>(null);
     const passwordEyeWrapperRef = useRef<any>(null);
-    const [loading, setLoading] = React.useState(false);
+    const signinErrRef = useRef<any>(null);
+
 
     const usernameKeyDown = KeyDown(emailRef);
     const emailKeyDown = KeyDown(passwordRef);
@@ -65,6 +67,7 @@ export default function SignupPage() {
 
     return (
     <form className={styles.signinFormContainer}  onSubmit={handleSubmit}>
+      <div className={styles.signinFormError} ref={signinErrRef}>No Err</div>
       <div className={styles.signinInputContainer}>
         <div className={styles.signinInputWrapper}>
           <label htmlFor="email" className={styles.signinLabel}>Email:</label>

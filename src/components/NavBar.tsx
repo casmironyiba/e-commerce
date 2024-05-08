@@ -16,11 +16,11 @@ useEffect(() =>{
 
   return (
     <div className={styles.navBar}>
-    <ul id="navBar" className={isNavBarOpen ? 'open' : ''}>
-      <SignInLink />
-      <OrderLink />
-      <CartLink />
-    </ul>
+      <ul id="navBar" className={isNavBarOpen ? 'open' : ''}>
+        <SignInLink />
+        <OrderLink />
+        <CartLink />
+      </ul>
     </div>
   )
 };

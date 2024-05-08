@@ -7,6 +7,7 @@
     @include abstracts.displayFlex(space-between,center,column nowrap);
     position: relative;
     padding: 0;
+    font-size:1rem;
 
     #searchItems {
       position: relative;
@@ -34,7 +35,7 @@
 
 .headerWrapper {
   @include abstracts.mediaQueries('mobileS') {
-    @include abstracts.boxProperty(100%,50%,'',abstracts.remsize(10),abstracts.$dark);
+    @include abstracts.boxProperty(100%,100%,'',abstracts.remsize(10),inherit);
     @include abstracts.displayFlex(space-between,center,row nowrap);
   };
 

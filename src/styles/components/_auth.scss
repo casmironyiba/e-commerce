@@ -8,13 +8,13 @@
 
 
 %authInputContainer {
-  @include abstracts.boxProperty(100%,100%,'',abstracts.remsize(5));
+  @include abstracts.boxProperty(100%,92%,'',abstracts.remsize(5));
   @include abstracts.displayFlex(space-around,center,column nowrap);
-  gap:10px;
+  gap:5px;
 };
 
 %authInputWrapper {
-  @include abstracts.boxProperty(100%, 60px,'',abstracts.remsize(0));
+  @include abstracts.boxProperty(100%, 50px,'',abstracts.remsize(0));
   // background: blue;
   @include abstracts.displayFlex(space-between,flex-start,column nowrap);
 };
