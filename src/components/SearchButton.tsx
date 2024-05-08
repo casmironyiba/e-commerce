@@ -11,8 +11,8 @@ export default function SearchButton() {
         className={styles.headerSearchIcon}
         sx={{
           fontSize:25,
-          color:'white',
-          background:'#333333'
+          color:'purple',
+          background:'red'
           }}
       />
     </button>
