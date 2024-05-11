@@ -10,11 +10,6 @@ export default function SignInLink() {
           Hello, sign in
         </Link>
       </li>
-
-      <div className={styles.signinHoverWrapper}>
-        <h1>Hello Avatar</h1>
-        <p>welcome avatar</p>
-      </div>
     </ul>
   )
 };

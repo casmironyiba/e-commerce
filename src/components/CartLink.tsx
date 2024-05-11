@@ -5,13 +5,12 @@ import styles from '../styles/components/cart.module.scss';
 
 export default function CartLink() {
   return (
-
-      <div className={styles.cartContainer}>
-        <Link href='/cart'>
-          <ShoppingCartIcon />
-          Cart
-        </Link>
-      </div>
+    <ul className={styles.cartContainer}>
+      <Link href='/cart'>
+        <ShoppingCartIcon />
+        Cart
+      </Link>
+    </ul>
   )
 };
 

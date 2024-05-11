@@ -1,11 +1,13 @@
 @use '../abstracts';
 
 .cartContainer {
-  @include abstracts.boxProperty(abstracts.remsize(120),abstracts.remsize(50),abstracts.remsize(10));
-  @include abstracts.displayFlex(center,center);
+  @include abstracts.boxProperty(abstracts.remsize(150),abstracts.remsize(50),abstracts.remsize(10));
+  background-color: red;
+  @include abstracts.displayFlex(space-between,center, row nowrap);
   position:relative;
+
    a {
-    @include abstracts.boxProperty(100%,80%);
+    width:100%;
     @include abstracts.displayFlex(center,center);
     text-align:center;
     color:white;

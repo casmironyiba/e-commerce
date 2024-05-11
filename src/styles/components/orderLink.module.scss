@@ -5,6 +5,11 @@
     @include abstracts.boxProperty(remsize(170),remsize(50));
     position:relative;
 
+    li {
+      a{
+        color:abstracts.$white;
+      }
+    }
     .orderLinkHoverWrapper {
       @include abstracts.boxProperty(abstracts.remsize(300),abstracts.remsize(200),'',abstracts.remsize(5),abstracts.$purple);
       @include abstracts.displayFlex(space-between,center,column nowrap);
@@ -30,6 +35,17 @@
   };
 
   @include abstracts.mediaQueries('laptop') {
+    // background: white;
+    li {
+      list-style:none;
+
+      a {
+        @include abstracts.displayFlex(space-between,center,row nowrap);
+        // font-size: 1rem;
+      }
+
+    };
+
     &:hover {
       position:relative;
       

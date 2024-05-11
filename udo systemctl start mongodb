@@ -1,0 +1,10 @@
+[0;1;31m●[0m mongod.service - MongoDB Database Server
+     Loaded: loaded (/lib/systemd/system/mongod.service; enabled; vendor preset: enabled)
+     Active: [0;1;31mfailed[0m (Result: core-dump) since Fri 2024-05-10 20:09:08 GMT; 1min 58s ago
+       Docs: https://docs.mongodb.org/manual
+    Process: 6646 ExecStart=/usr/bin/mongod --config /etc/mongod.conf [0;1;31m(code=dumped, signal=ILL)[0m
+   Main PID: 6646 (code=dumped, signal=ILL)
+
+May 10 20:09:08 casmir-HP-EliteBook-8470p systemd[1]: Started MongoDB Database Server.
+May 10 20:09:08 casmir-HP-EliteBook-8470p systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mmongod.service: Main process exited, code=dumped, status=4/ILL[0m
+May 10 20:09:08 casmir-HP-EliteBook-8470p systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mmongod.service: Failed with result 'core-dump'.[0m

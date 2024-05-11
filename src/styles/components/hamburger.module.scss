@@ -5,7 +5,7 @@
     @include abstracts.boxProperty(abstracts.remsize(40),abstracts.remsize(40));
     @include abstracts.displayFlex(center,center);
     cursor:pointer;
-    background: red;
+    // background: red;
 
     &.open {
       // display: none;

@@ -15,12 +15,12 @@ useEffect(() =>{
   },[isNavBarOpen])
 
   return (
-    <div className={styles.navBar}>
-      <ul id="navBar" className={isNavBarOpen ? 'open' : ''}>
+    <div className={styles.navbar}>
+      <div id="navbarWrapper" className={isNavBarOpen ? 'open' : ''}>
         <SignInLink />
         <OrderLink />
         <CartLink />
-      </ul>
+      </div>
     </div>
   )
 };

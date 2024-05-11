@@ -1,12 +1,12 @@
 @use "../abstracts";
 
-.navBar {
+.navbar {
   @include abstracts.mediaQueries('mobileS') {
     height:100%;
     list-style:none;
      display:none;
      position:relative;
-     background:yellow;
+     // background:yellow;
 
       &.open {
         @include abstracts.boxProperty(abstracts.remsize(280), 400px, '', remsize(0),abstracts.$dark);
@@ -14,6 +14,7 @@
         position:absolute;
         top:80px;
         right:0;
+
         #menuOpenIcon {
           display:inline-block;
         };
@@ -27,9 +28,39 @@
   }
 
   @include abstracts.mediaQueries('laptop') {
-    @include abstracts.boxProperty(abstracts.remsize(400), 100%, '', abstracts.remsize(0));
-    @include abstracts.displayFlex(space-between, center, row nowrap);
+    @include abstracts.boxProperty(abstracts.remsize(400), 100%, '', abstracts.remsize(5));
     position:relative;
+    @include abstracts.displayFlex(center, center);
+
+      div {
+        width:100%;
+        height:90%;
+        @include abstracts.displayFlex(space-around, center, row nowrap);
+        list-style: none;
+        text-decoration: none;
+        // background:blue;
+        font-size: .7rem;
+
+        &> ul {
+          width:90px;
+          height:30px;
+          background:none;
+
+        };
+
+        // &:nth-childe(evenerLinkContainer {
+        //   width:140px;
+        //
+        // }
+
+        a {
+          text-decoration:none;
+          list-style:none;
+        }
+
+
+    }
+
   };
 
   @include abstracts.mediaQueries('laptopM') {

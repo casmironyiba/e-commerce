@@ -15,11 +15,11 @@ import styles from '@/styles/pages/auth/signup.module.scss';
 export default function SignupPage() {
 
     const router = useRouter();
-    // const [username,setUsername] = useState('');
-    // const [email,setEmail] = useState('');
-    // const [phoneNumber,setPhoneNumber] = useState('');
-    // const [password,setPassword] = useState('');
-    // const [comfirmPassword,setComfirmPassword] = useState('');
+    const [username,setUsername] = useState('');
+    const [email,setEmail] = useState('');
+    const [phoneNumber,setPhoneNumber] = useState('');
+    const [password,setPassword] = useState('');
+    const [comfirmPassword,setComfirmPassword] = useState('');
     const [passwordVisible,setPasswordVisible] = useState(false);
     const [comfirmPasswordVisible,setComfirmPasswordVisible] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -45,31 +45,6 @@ export default function SignupPage() {
       };
 
 
-<<<<<<< HEAD
- 
-    //   try {
-    //     setLoading(true);
-    //     const res = await fetch(
-    //     "/api/auth/signup",
-    //     {
-    //       username,
-    //       email,
-    //       phoneNumber,
-    //       password,
-    //       isAdmin:false
-    //     });
-    //     console.log("Signup success", response.data);
-    //     router.push("/login");
-    //       
-    //   } catch (error:any) {
-    //       console.log("Signup failed", error.message);
-    //       
-    //       toast.error(error.message);
-    //   }finally {
-    //       setLoading(false);
-    //   }
-    // }
-=======
     const handleSubmit = async (event:any) => {
       event.preventDefault();
       const userInput = {
@@ -107,7 +82,6 @@ export default function SignupPage() {
           setLoading(false);
       }
     }
->>>>>>> forgotpassword
 
     useEffect(() => {
       usernameRef?.current?.focus()

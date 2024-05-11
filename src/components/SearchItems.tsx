@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef } from 'react'
 import styles from '../styles/components/searchItems.module.scss'
-import SearchButton from './SearchButton';
+import SearchIcon from '@mui/icons-material/Search';
 
 interface SearchProps {
   isSearchIconOpen:boolean;
@@ -27,13 +27,26 @@ const SearchItems:FC<SearchProps> = ({isSearchIconOpen, setIsSearchIconOpen}) =>
 
   return (
     <div className={styles.searchItems}>
-      <div className={styles.headerSearchIconWrapper}>
-        <SearchButton />
-      </div>
+      <form className={styles.form} id='searchItemsForm'>
+        <button
+          className={styles.button}
+        >
+          <SearchIcon
+            className={styles.icon}
+            sx={{
+              fontSize:15,
+              color:'white',
+              background:'#333333'
+              }}
+          />
+        </button>
 
-    <form className={styles.searchItemsForm} id='searchItemsForm'>
-      <input type='text' placeholder='Search products of any brand' /> 
-    </form>
+        <input 
+          type='text' 
+          placeholder='Search products of any brand' 
+          className={styles.input}
+          /> 
+      </form>
     </div>
   )
 };
