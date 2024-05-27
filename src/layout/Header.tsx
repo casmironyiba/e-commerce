@@ -5,6 +5,8 @@ import React, {useState} from 'react'
 import SearchItems from '@/components/SearchItems';
 import Hamburger from '@/components/Hamburger';
 import styles from '../styles/layouts/header.module.scss';
+// import CartLink from '@/components/CartLink'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined'
 
 export default function Header() {
   const [isNavBarOpen, setIsNavBarOpen] = useState(false)
@@ -14,6 +16,13 @@ export default function Header() {
         <Logo /> 
         <SearchItems />
         <NavBar isNavBarOpen={isNavBarOpen}/> 
+        <ShoppingCartIcon 
+          className={styles.shoppingcartIcon}
+          sx={{
+            color:'white',
+            background:'#333333'
+            }}
+        />
         <Hamburger isNavBarOpen={isNavBarOpen} setIsNavBarOpen={setIsNavBarOpen} />
       </div>
     </div>

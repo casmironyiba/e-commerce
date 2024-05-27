@@ -1,17 +1,18 @@
 
 'use client';
-import styled from 'styled-components';
-import React from 'react'
+import HomeContent from '@/components/HomeContent';
+import HomePopup from '@/components/HomePopup';
+import styles from '@/styles/pages/home.module.scss';
+import React, {useEffect, useRef} from 'react'
 
-const Container = styled.div`
-  grid-area:m;
-  background:blue;
-`;
+
 
 export default function Home() {
   return (
-  <Container>
-    main:
-  </Container>
+  <div className={styles.home}>
+    <div className={styles.homeWrapper}>
+      <HomeContent />
+    </div>
+  </div>
   )
 }

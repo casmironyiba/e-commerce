@@ -2,9 +2,7 @@
 
 .cartContainer {
   @include abstracts.boxProperty(abstracts.remsize(150),abstracts.remsize(50),abstracts.remsize(10));
-  background-color: red;
   @include abstracts.displayFlex(space-between,center, row nowrap);
-  position:relative;
 
    a {
     width:100%;

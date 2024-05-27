@@ -1,0 +1,8 @@
+@use '../abstracts';
+
+.homelayout1 {
+  @include abstracts.boxProperty(100%,abstracts.remsize(250),auto,10px,abstracts.$yellow);
+  box-shadow: 1px 1px 3px black;
+  border-radius: 5px;
+};
+

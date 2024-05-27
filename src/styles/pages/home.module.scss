@@ -1,0 +1,16 @@
+@use "../abstracts";
+
+.home {
+  @include abstracts.mediaQueries("mobileS") {
+    @include abstracts.boxProperty(100%,100%,auto,0px,abstracts.$light);
+    grid-area:m;
+    // background:blue;
+
+    .homeWrapper {
+      @include abstracts.boxProperty(90%,100%,auto,0px,abstracts.$light);
+      // position: relative;
+
+    }
+
+  }
+}

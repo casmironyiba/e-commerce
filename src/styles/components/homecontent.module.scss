@@ -1,0 +1,40 @@
+@use '../abstracts';
+
+.homecontent {
+  @include abstracts.mediaQueries('mobileS') {
+    @include abstracts.boxProperty(100%,100%,auto,0px,abstracts.$light);
+
+    .homecontentWrapper {
+      @include abstracts.boxProperty(100%,100%,auto,0px,abstracts.$light);
+      // background-color:palegreen;
+
+      .layout1 {
+        @include abstracts.boxProperty(100%, 300px,auto, abstracts.remsize(5));
+        @include abstracts.displayFlex(center,center);
+      };
+
+      .layout2 {
+        @include abstracts.boxProperty(100%, 2200px,auto, abstracts.remsize(5));
+        @include abstracts.displayFlex(space-around,center, row wrap);
+        gap:10px;
+      }
+    }
+  };
+
+  @include abstracts.mediaQueries('mobileM') {
+    .homecontentWrapper {
+      .layout2 {
+        height: 1400px;
+      }
+    }
+  };
+
+  @include abstracts.mediaQueries('tablet') {
+    .homecontentWrapper {
+      .layout2 {
+        height: 1000px;
+      }
+    }
+  };
+
+}

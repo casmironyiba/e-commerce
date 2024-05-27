@@ -3,7 +3,6 @@
 .rootLayout {
 
   * {
-
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -12,7 +11,7 @@
   display: grid;
 
   @include abstracts.mediaQueries('mobileS') {
-    @include abstracts.boxProperty(100%,abstracts.remsize(1500),auto,0px, abstracts.$red);
+    @include abstracts.boxProperty(100%,2800px,auto,0px, abstracts.$red);
     grid-template-columns:repeat(10, 1fr);
     grid-template-rows: 80px auto 200px;
     grid-template-areas:

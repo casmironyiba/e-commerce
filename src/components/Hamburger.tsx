@@ -29,24 +29,26 @@ console.log('isNavBarOpen after click:', isNavBarOpen);
 
       // console.log('isNavBarOpen:', isNavBarOpen);
 
-const containerClass = isNavBarOpen ? 'open' : '';
+const containerClass = isNavBarOpen ? styles.hamburgerActive : styles.hamburger;
 
   return (
-    <div 
-      ref={menuRef}
-      className={styles.hamburger}
-    >
-      <MenuIcon
-        sx={{color:'white',fontSize:35}} 
-        id='menuIcon'
+      <div 
+        ref={menuRef}
         // className={styles.hamburger}
-        />
-      <MenuOpenIcon
-        sx={{color:'white',fontSize:40}}
-        fontSize='large'
-        id='menuOpenIcon'
-        className={styles.menuOpenIcon}
-        />
+className={containerClass}
+      >
+        <MenuIcon
+          sx={{color:'white',fontSize:35}} 
+          id='menuIcon'
+          className={styles.menuIcon}
+          // className={styles.hamburger}
+          />
+        <MenuOpenIcon
+          sx={{color:'white',fontSize:40}}
+          fontSize='large'
+          id='menuOpenIcon'
+          className={styles.menuOpenIcon}
+          />
     </div>
   )
 };

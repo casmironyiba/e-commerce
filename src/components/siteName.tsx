@@ -1,4 +1,4 @@
 import React from "react";
 
-const SiteName = "newBreed"
+const SiteName = "new"
 export default SiteName;

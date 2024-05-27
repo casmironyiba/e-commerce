@@ -2,14 +2,15 @@
 
 .logo {
   @include abstracts.mediaQueries('mobileS') {
-    @include abstracts.boxProperty(remsize(120),remsize(50));
+    @include abstracts.boxProperty(abstracts.remsize(50),abstracts.remsize(30));
     @include abstracts.displayFlex(center,center);
-    background:white;
-    font-size:1.4rem;
-    color:black;
-    border:2px solid white;
+    // background:white;
+    font-size:.9rem;
+    border:1px solid lightblue;
 
     a {
+    color:white;
+      // @include abstracts.boxProperty(100%,100%,auto);
         text-decoration: none;
       }
 

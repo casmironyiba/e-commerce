@@ -1,13 +1,16 @@
 @use "../abstracts";
 
-.orderLinkContainer {
+.orderlink {
   @include abstracts.mediaQueries('mobileS') {
-    @include abstracts.boxProperty(remsize(170),remsize(50));
-    position:relative;
+    @include abstracts.boxProperty(remsize(140),remsize(50));
 
     li {
+      list-style:none;
+
       a{
         color:abstracts.$white;
+        text-decoration:none;
+        @include abstracts.displayFlex(space-between,center,row nowrap);
       }
     }
     .orderLinkHoverWrapper {
@@ -32,7 +35,7 @@
          };
        };
     };
-  };
+    };
 
   @include abstracts.mediaQueries('laptop') {
     // background: white;
@@ -58,6 +61,5 @@
       };
     };
   };
-};
-
+}
 

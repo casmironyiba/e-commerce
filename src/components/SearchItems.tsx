@@ -28,24 +28,24 @@ const SearchItems:FC<SearchProps> = ({isSearchIconOpen, setIsSearchIconOpen}) =>
   return (
     <div className={styles.searchItems}>
       <form className={styles.form} id='searchItemsForm'>
+        <input 
+          type='text' 
+          placeholder='Search products of any brand' 
+          className={styles.input}
+          /> 
+
         <button
           className={styles.button}
         >
           <SearchIcon
             className={styles.icon}
             sx={{
-              fontSize:15,
+              fontSize:12,
               color:'white',
               background:'#333333'
               }}
           />
         </button>
-
-        <input 
-          type='text' 
-          placeholder='Search products of any brand' 
-          className={styles.input}
-          /> 
       </form>
     </div>
   )

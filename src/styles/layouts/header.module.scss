@@ -3,7 +3,7 @@
 .header {
   grid-area:h;
   @include abstracts.mediaQueries('mobileS') {
-    @include abstracts.boxProperty(100%,100%,'',abstracts.remsize(0),abstracts.$dark);
+    @include abstracts.boxProperty(100%,100%,'auto',abstracts.remsize(5),abstracts.$dark);
     @include abstracts.displayFlex(space-between,center,column nowrap);
     position: relative;
     padding: 0;
@@ -14,6 +14,14 @@
       top:75px;
       right:40px;
     }
+  };
+
+  @include abstracts.mediaQueries('mobileM') {
+    width: 100%;
+  };
+
+  @include abstracts.mediaQueries('mobileL') {
+    width: 100%;
   };
 
   @include abstracts.mediaQueries('tablet') {
@@ -35,14 +43,24 @@
 
 .headerWrapper {
   @include abstracts.mediaQueries('mobileS') {
-    @include abstracts.boxProperty(100%,100%,'',abstracts.remsize(10),inherit);
+    @include abstracts.boxProperty(98%,100%,'auto',abstracts.remsize(0),inherit);
     @include abstracts.displayFlex(space-between,center,row nowrap);
-    // background:red;
+
   };
 
   @include abstracts.mediaQueries('tablet') {
     height:100%;
 
+  };
+
+  @include abstracts.mediaQueries('laptop') {
+    height:100%;
+
+    .shoppingcartIcon {
+      display:none;
+
+
+    }
   };
 };
 

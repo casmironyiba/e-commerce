@@ -2,12 +2,7 @@
 import Header from '@/layout/Header'
 import Footer from '@/layout/Footer'
 import type { Metadata } from 'next'
-import styled from 'styled-components'
-import boxProperty from '@/fp/boxProperty'
-import remsize from '@/fp/remsize'
-import StyledComponentsRegistry from '@/libs/styledRegistry'
-import {colors} from '@/components/Themes';
-import { mediaQueries } from '@/fp/mediaQueries'
+// import StyledComponentsRegistry from '@/libs/styledRegistry'
 import Main  from '@/layout/Main';
 import styles from '../styles/layouts/home.module.scss';
 // import GlobalStyle from '@/components/Globaltyle';
@@ -21,16 +16,12 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className='mainContainer'>
-        <StyledComponentsRegistry>
-          <div className={styles.rootLayout}>
-            <Header />
-            <Main>
-              {children}
-            </Main>
-            <Footer />
-          </div>
-        </StyledComponentsRegistry>
+      <body className={styles.rootLayout}>
+        <Header />
+        <Main>
+          {children}
+        </Main>
+        <Footer />
       </body>
     </html>
   )

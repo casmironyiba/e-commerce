@@ -2,29 +2,14 @@
 
 .navbar {
   @include abstracts.mediaQueries('mobileS') {
+    width:100%;
     height:100%;
     list-style:none;
      display:none;
      position:relative;
-     // background:yellow;
 
-      &.open {
-        @include abstracts.boxProperty(abstracts.remsize(280), 400px, '', remsize(0),abstracts.$dark);
-        @include abstracts.displayFlex(space-around, center,column nowrap);
-        position:absolute;
-        top:80px;
-        right:0;
 
-        #menuOpenIcon {
-          display:inline-block;
-        };
-        @include abstracts.animations(navAnime, .3s, ease-in-out,forwards);
 
-        @keyframes navAnime {
-          0% {right:-500px}
-          100% {right:0}
-        }
-      }
   }
 
   @include abstracts.mediaQueries('laptop') {
@@ -34,11 +19,10 @@
 
       div {
         width:100%;
-        height:90%;
+        height:50%;
         @include abstracts.displayFlex(space-around, center, row nowrap);
         list-style: none;
         text-decoration: none;
-        // background:blue;
         font-size: .7rem;
 
         &> ul {
@@ -48,10 +32,6 @@
 
         };
 
-        // &:nth-childe(evenerLinkContainer {
-        //   width:140px;
-        //
-        // }
 
         a {
           text-decoration:none;
@@ -68,3 +48,43 @@
   };
 };
 
+.navbarOpen {
+  @include abstracts.mediaQueries('mobileS') {
+    @include abstracts.boxProperty(abstracts.remsize(200), 100vh, '', remsize(0),abstracts.$dark);
+    position:absolute;
+      // @include abstracts.displayFlex(center, center);
+    // background:blue;
+    top:80px;
+    right:0;
+
+     .navbarWrapper {
+      min-height:abstracts.remsize(270);
+      width:100%;
+      border-radius:5px;
+      // background:blue;
+      @include abstracts.displayFlex(space-around, center,column nowrap);
+      font-size: .7rem;
+      padding: 10px;
+
+    };
+
+     ul {
+      width:100%;
+      height:30px;
+      // background:grey;
+      @include abstracts.displayFlex(space-around, center,row nowrap);
+
+    };
+
+
+    #menuOpenIcon {
+      display:inline-block;
+    };
+    @include abstracts.animations(navAnime, .3s, ease-in-out,forwards);
+
+    @keyframes navAnime {
+      0% {right:-500px}
+      100% {right:0}
+    }
+  }
+}

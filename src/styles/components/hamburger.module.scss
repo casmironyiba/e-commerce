@@ -5,18 +5,7 @@
     @include abstracts.boxProperty(abstracts.remsize(40),abstracts.remsize(40));
     @include abstracts.displayFlex(center,center);
     cursor:pointer;
-    // background: red;
 
-    &.open {
-      // display: none;
-
-      svg#menuOpenIcon {
-        display:inline-block;
-      }
-      svg#menuIcon {
-        display:none;
-      }
-    }
 
     .menuOpenIcon {
       display:none;
@@ -31,4 +20,16 @@
       display:none;
     }
   };
+};
+
+.hamburgerActive {
+  @include abstracts.mediaQueries('mobileS') {
+    .menuOpenIcon {
+      display:inline-block;
+      cursor:pointer;
+    }
+    .menuIcon {
+      display:none;
+    }
+  }
 };
